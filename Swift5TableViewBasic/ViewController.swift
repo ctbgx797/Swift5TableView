@@ -24,6 +24,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
     }
     
+    //画面が表示されるたびに何回も呼ばれる NavigationBarを非表示にする
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     /*TableViewDelegateにおいて必要なメソッド
      func tableView
      これはFixでXcodeが出してくれる
@@ -57,8 +62,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     //セルが構築されるときに呼ばれる
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.selectionStyle = .none //ハイライトを削除する
         cell.textLabel?.text = textArray[indexPath.row]
         cell.imageView!.image = UIImage(named: "checkImage")
         

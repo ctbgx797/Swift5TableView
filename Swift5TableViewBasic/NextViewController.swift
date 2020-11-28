@@ -20,5 +20,11 @@ class NextViewController: UIViewController {
      
     }
     
+    //画面が表示されるたびに何回も呼ばれる NavigationBarを表示にする
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    
 
 }
